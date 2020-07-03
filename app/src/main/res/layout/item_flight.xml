@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/airlines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AIRLINES" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TIME" />
+
+        <TextView
+            android:id="@+id/classType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CLASS" />
+
+        <TextView
+            android:id="@+id/fare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FARE" />
+
+        <TextView
+            android:id="@+id/provider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PROVIDER" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
