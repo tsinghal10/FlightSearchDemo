@@ -12,13 +12,13 @@
         android:id="@+id/origin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="From" />
+        android:hint="Origin" />
 
     <AutoCompleteTextView
         android:id="@+id/destination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="To" />
+        android:hint="Destination" />
 
     <Button
         android:id="@+id/search"

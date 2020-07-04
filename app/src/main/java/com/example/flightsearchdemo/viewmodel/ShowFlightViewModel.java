@@ -35,7 +35,12 @@ public class ShowFlightViewModel extends ViewModel {
         call.enqueue(new Callback<JsonApiData>() {
             @Override
             public void onResponse(Call<JsonApiData> call, Response<JsonApiData> response) {
-
+                if (!response.isSuccessful()) {
+                    Log.d("API CALL", "Call Unsuccessful");
+                } else {
+                    JsonApiData jsonApiData = response.body();
+                    mJsonData.postValue(jsonApiData);
+                }
             }
 
             @Override
@@ -43,7 +48,6 @@ public class ShowFlightViewModel extends ViewModel {
                 Log.d("API CALL", t.getMessage());
             }
         });
-
 
     }
 }

@@ -27,16 +27,21 @@ public class SearchFlightViewModel extends ViewModel {
     }
 
     private void loadData() {
-        RetrofitClient
-                .getInstance();
+
         Call<JsonApiData> call = RetrofitClient
+                .getInstance()
                 .getApi()
                 .getData();
 
         call.enqueue(new Callback<JsonApiData>() {
             @Override
             public void onResponse(Call<JsonApiData> call, Response<JsonApiData> response) {
-
+                if (!response.isSuccessful()) {
+                    Log.d("API CALL", "Call Unsuccessful");
+                } else {
+                    JsonApiData jsonApiData = response.body();
+                    mJsonData.postValue(jsonApiData);
+                }
             }
 
             @Override
@@ -44,7 +49,6 @@ public class SearchFlightViewModel extends ViewModel {
                 Log.d("API CALL", t.getMessage());
             }
         });
-
 
     }
 }
