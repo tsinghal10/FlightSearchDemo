@@ -54,7 +54,7 @@ public class SearchFlightActivity extends AppCompatActivity {
                     showIntent.putExtra("destination", binding.destination.getText().toString());
                     startActivity(showIntent);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Invalid Data", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Invalid Data", Toast.LENGTH_LONG).show();
                 }
             }
         });

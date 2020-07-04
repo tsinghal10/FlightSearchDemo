@@ -28,8 +28,9 @@ public class SearchFlightViewModel extends ViewModel {
 
     private void loadData() {
 
+        RetrofitClient
+                .getInstance();
         Call<JsonApiData> call = RetrofitClient
-                .getInstance()
                 .getApi()
                 .getData();
 
@@ -40,6 +41,7 @@ public class SearchFlightViewModel extends ViewModel {
                     Log.d("API CALL", "Call Unsuccessful");
                 } else {
                     JsonApiData jsonApiData = response.body();
+                    Log.d("API CALL", "Call Successful");
                     mJsonData.postValue(jsonApiData);
                 }
             }
