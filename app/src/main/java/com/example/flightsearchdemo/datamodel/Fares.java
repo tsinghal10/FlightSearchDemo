@@ -2,27 +2,27 @@ package com.example.flightsearchdemo.datamodel;
 
 public class Fares {
 
-    private int providerId;
-    private int fare;
+    private String providerId;
+    private String fare;
 
     public Fares(int providerId, int fare) {
-        this.providerId = providerId;
-        this.fare = fare;
+        this.providerId = "" + providerId;
+        this.fare = "" + fare;
     }
 
-    public int getFare() {
+    public String getFare() {
         return fare;
     }
 
-    public int getProviderId() {
+    public String getProviderId() {
         return providerId;
     }
 
     public void setFare(int fare) {
-        this.fare = fare;
+        this.fare = "" + fare;
     }
 
     public void setProviderId(int providerId) {
-        this.providerId = providerId;
+        this.providerId = "" + providerId;
     }
 }

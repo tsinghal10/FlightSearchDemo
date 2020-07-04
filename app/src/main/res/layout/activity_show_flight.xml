@@ -28,6 +28,10 @@
                 android:textAlignment="center" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-------->"/>
+            <TextView
                 android:id="@+id/from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,14 +41,14 @@
                 android:textAlignment="center" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:text="DATE"
-            android:textAlignment="center" />
+<!--        <TextView-->
+<!--            android:id="@+id/date"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="DATE"-->
+<!--            android:textAlignment="center" />-->
 
     </LinearLayout>
 
@@ -57,7 +61,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="10dp"
         android:scrollbars="vertical">
 

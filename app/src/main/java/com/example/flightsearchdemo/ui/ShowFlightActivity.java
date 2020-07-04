@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.flightsearchdemo.adapter.ShowFlightAdapter;
 import com.example.flightsearchdemo.databinding.ActivityShowFlightBinding;
@@ -41,21 +42,23 @@ public class ShowFlightActivity extends AppCompatActivity {
 
         flights = new ArrayList<>();
         recyclerView = binding.recyclerView;
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        showFlightAdapter = new ShowFlightAdapter(this, flights);
-        recyclerView.setAdapter(showFlightAdapter);
+//        recyclerView.setHasFixedSize(true);
+
 
         showFlightViewModel = new ViewModelProvider(this).get(ShowFlightViewModel.class);
         showFlightViewModel.getData().observe(this, mJsonData -> {
             flights = mJsonData.getFlights();
 
-            Date date = new Date(flights.get(0).getDepartureTime());
-//            DateFormat timeFormat = new SimpleDateFormat("dd/MM/YY");
-            String flightDate = DateFormat.getDateInstance(DateFormat.LONG).format(date);
-            binding.date.setText(flightDate);
+//            Date date = new Date(flights.get(0).getDepartureTime());
+////            DateFormat timeFormat = new SimpleDateFormat("dd/MM/YY");
+//            String flightDate = DateFormat.getDateInstance(DateFormat.LONG).format(date);
+//            binding.date.setText(flightDate);
 
-            showFlightAdapter.notifyDataSetChanged();
+            Log.d("view model", "observer");
+            showFlightAdapter = new ShowFlightAdapter(this, flights);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//            showFlightAdapter.notifyDataSetChanged();
+            recyclerView.setAdapter(showFlightAdapter);
 
         });
     }
