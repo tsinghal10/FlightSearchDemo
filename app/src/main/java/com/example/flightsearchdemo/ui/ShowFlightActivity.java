@@ -44,6 +44,9 @@ public class ShowFlightActivity extends AppCompatActivity {
         recyclerView = binding.recyclerView;
 //        recyclerView.setHasFixedSize(true);
 
+        showFlightAdapter = new ShowFlightAdapter(this, flights);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(showFlightAdapter);
 
         showFlightViewModel = new ViewModelProvider(this).get(ShowFlightViewModel.class);
         showFlightViewModel.getData().observe(this, mJsonData -> {
@@ -55,11 +58,7 @@ public class ShowFlightActivity extends AppCompatActivity {
 //            binding.date.setText(flightDate);
 
             Log.d("view model", "observer");
-            showFlightAdapter = new ShowFlightAdapter(this, flights);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//            showFlightAdapter.notifyDataSetChanged();
-            recyclerView.setAdapter(showFlightAdapter);
-
+            showFlightAdapter.setAdapterData(flights);
         });
     }
 }

@@ -40,9 +40,9 @@ public class SearchFlightActivity extends AppCompatActivity {
             }
             arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, airportsList);
             binding.origin.setAdapter(arrayAdapter);
-            binding.origin.setThreshold(2);
+            binding.origin.setThreshold(1);
             binding.destination.setAdapter(arrayAdapter);
-            binding.destination.setThreshold(2);
+            binding.destination.setThreshold(1);
         });
 
         binding.search.setOnClickListener(new View.OnClickListener() {

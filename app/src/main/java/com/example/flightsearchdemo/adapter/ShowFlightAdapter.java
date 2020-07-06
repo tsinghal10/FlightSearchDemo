@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.flightsearchdemo.databinding.ItemFlightBinding;
+import com.example.flightsearchdemo.datamodel.Fares;
 import com.example.flightsearchdemo.datamodel.Flights;
 
 import java.text.DateFormat;
@@ -42,9 +43,11 @@ public class ShowFlightAdapter extends RecyclerView.Adapter<ShowFlightAdapter.Sh
         Flights flight = flights.get(position);
         holder.itemFlightBinding.airlines.setText(flight.getAirlineCode());
         holder.itemFlightBinding.classType.setText(flight.getClassType());
+        ArrayList<Fares> fares = flight.getFares();
+//        Log.d("Fare size", String.valueOf(fares.get(0).getFare()));
 //        Log.d("Fare", flight.getClassType());
-//        holder.itemFlightBinding.fare.setText(flight.getFares().get(0).getFare());
-//        holder.itemFlightBinding.provider.setText(flight.getFares().get(0).getProviderId());
+        holder.itemFlightBinding.fare.setText(String.valueOf(fares.get(0).getFare()));
+        holder.itemFlightBinding.provider.setText(String.valueOf(fares.get(0).getProviderId()));
 
         Date departureDate = new Date(flight.getDepartureTime());
         Date arrivalDate = new Date(flight.getArrivalTime());
@@ -58,6 +61,11 @@ public class ShowFlightAdapter extends RecyclerView.Adapter<ShowFlightAdapter.Sh
     @Override
     public int getItemCount() {
         return flights.size();
+    }
+
+    public void setAdapterData(ArrayList<Flights> flights) {
+        this.flights = flights;
+        notifyDataSetChanged();
     }
 
     public class ShowFlightViewHolder extends RecyclerView.ViewHolder {
