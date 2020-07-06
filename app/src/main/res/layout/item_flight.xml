@@ -21,6 +21,12 @@
             android:layout_height="wrap_content"
             android:text="TIME" />
 
+        <!--        <TextView-->
+        <!--            android:id="@+id/flightTime"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Flight Time"/>-->
+
         <TextView
             android:id="@+id/classType"
             android:layout_width="match_parent"
@@ -45,6 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#000000"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 
 </androidx.cardview.widget.CardView>

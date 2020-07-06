@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.flightsearchdemo.databinding.ItemFlightBinding;
+import com.example.flightsearchdemo.datamodel.Appendix;
 import com.example.flightsearchdemo.datamodel.Fares;
 import com.example.flightsearchdemo.datamodel.Flights;
 
@@ -21,12 +22,14 @@ import static android.icu.text.DateFormat.LONG;
 
 public class ShowFlightAdapter extends RecyclerView.Adapter<ShowFlightAdapter.ShowFlightViewHolder> {
     private ArrayList<Flights> flights;
+    private Appendix appendix;
     private Context context;
 
-    public ShowFlightAdapter(Context context, ArrayList<Flights> flights) {
+    public ShowFlightAdapter(Context context, ArrayList<Flights> flights, Appendix appendix) {
         Log.d("adapter", "constructor");
         this.context = context;
         this.flights = flights;
+        this.appendix = appendix;
     }
 
     @NonNull
@@ -46,16 +49,18 @@ public class ShowFlightAdapter extends RecyclerView.Adapter<ShowFlightAdapter.Sh
         ArrayList<Fares> fares = flight.getFares();
 //        Log.d("Fare size", String.valueOf(fares.get(0).getFare()));
 //        Log.d("Fare", flight.getClassType());
+
+        int providerId = fares.get(0).getProviderId();
         holder.itemFlightBinding.fare.setText(String.valueOf(fares.get(0).getFare()));
-        holder.itemFlightBinding.provider.setText(String.valueOf(fares.get(0).getProviderId()));
+        holder.itemFlightBinding.provider.setText(appendix.getProviders().get(String.valueOf(providerId)));
 
         Date departureDate = new Date(flight.getDepartureTime());
         Date arrivalDate = new Date(flight.getArrivalTime());
 //        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        String date = DateFormat.getDateInstance(DateFormat.LONG).format(departureDate);
+//        String date = DateFormat.getDateInstance(DateFormat.LONG).format(departureDate);
         String arrivalTime = DateFormat.getTimeInstance(DateFormat.SHORT).format(arrivalDate);
         String departureTime = DateFormat.getTimeInstance(DateFormat.SHORT).format(departureDate);
-        holder.itemFlightBinding.time.setText(date + "\n" + departureTime + " - " + arrivalTime);
+        holder.itemFlightBinding.time.setText(departureTime + " - " + arrivalTime);
     }
 
     @Override
@@ -63,8 +68,9 @@ public class ShowFlightAdapter extends RecyclerView.Adapter<ShowFlightAdapter.Sh
         return flights.size();
     }
 
-    public void setAdapterData(ArrayList<Flights> flights) {
+    public void setAdapterData(ArrayList<Flights> flights, Appendix appendix) {
         this.flights = flights;
+        this.appendix = appendix;
         notifyDataSetChanged();
     }
 

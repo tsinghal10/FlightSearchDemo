@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.example.flightsearchdemo.adapter.ShowFlightAdapter;
 import com.example.flightsearchdemo.databinding.ActivityShowFlightBinding;
+import com.example.flightsearchdemo.datamodel.Appendix;
 import com.example.flightsearchdemo.datamodel.Flights;
 import com.example.flightsearchdemo.viewmodel.ShowFlightViewModel;
 
@@ -26,6 +27,7 @@ public class ShowFlightActivity extends AppCompatActivity {
     private ShowFlightAdapter showFlightAdapter;
 
     private ArrayList<Flights> flights;
+    private Appendix appendix;
 
 
     @Override
@@ -42,23 +44,24 @@ public class ShowFlightActivity extends AppCompatActivity {
 
         flights = new ArrayList<>();
         recyclerView = binding.recyclerView;
-//        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
 
-        showFlightAdapter = new ShowFlightAdapter(this, flights);
+        showFlightAdapter = new ShowFlightAdapter(this, flights, appendix);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(showFlightAdapter);
 
         showFlightViewModel = new ViewModelProvider(this).get(ShowFlightViewModel.class);
         showFlightViewModel.getData().observe(this, mJsonData -> {
             flights = mJsonData.getFlights();
+            appendix = mJsonData.getAppendix();
 
-//            Date date = new Date(flights.get(0).getDepartureTime());
-////            DateFormat timeFormat = new SimpleDateFormat("dd/MM/YY");
-//            String flightDate = DateFormat.getDateInstance(DateFormat.LONG).format(date);
-//            binding.date.setText(flightDate);
+            Date date = new Date(flights.get(0).getDepartureTime());
+//            DateFormat timeFormat = new SimpleDateFormat("dd/MM/YY");
+            String flightDate = DateFormat.getDateInstance(DateFormat.LONG).format(date);
+            binding.date.setText(flightDate);
 
             Log.d("view model", "observer");
-            showFlightAdapter.setAdapterData(flights);
+            showFlightAdapter.setAdapterData(flights, appendix);
         });
     }
 }
