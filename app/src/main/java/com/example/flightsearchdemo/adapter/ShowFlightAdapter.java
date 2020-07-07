@@ -74,7 +74,7 @@ public class ShowFlightAdapter extends RecyclerView.Adapter<ShowFlightAdapter.Sh
         int noOfChildTextViews = holder.childLL.getChildCount();
         for (int index = 0; index < noOfChildTextViews; index++) {
             TextView fare = (TextView) holder.childLL.getChildAt(index);
-//            TextView provider = (TextView) holder.childLL.getChildAt(index + 100);
+//            TextView provider = (TextView) holder.childLL.getChildAt(index - 100);
 //            Log.d("IDDDD: ", String.valueOf(provider.getId()));
 
             fare.setVisibility(View.VISIBLE);
@@ -84,15 +84,15 @@ public class ShowFlightAdapter extends RecyclerView.Adapter<ShowFlightAdapter.Sh
         if (noOfChild < noOfChildTextViews) {
             for (int index = noOfChild; index < noOfChildTextViews; index++) {
                 TextView fare = (TextView) holder.childLL.getChildAt(index);
-//                TextView provider = (TextView) holder.childLL.getChildAt(index + 100);
+//                TextView provider = (TextView) holder.childLL.getChildAt(index - 100);
                 fare.setVisibility(View.GONE);
 //                provider.setVisibility(View.GONE);
             }
         }
         for (int textViewIndex = 0; textViewIndex < noOfChild; textViewIndex++) {
             TextView fare = (TextView) holder.childLL.getChildAt(textViewIndex);
-//            TextView provider = (TextView) holder.childLL.getChildAt(textViewIndex + 100);
-            fare.setText("\u20B9 " + fares.get(textViewIndex).getFare());
+//            TextView provider = (TextView) holder.childLL.getChildAt(textViewIndex - 100);
+            fare.setText("\u20B9 " + fares.get(textViewIndex).getFare() + "\t\t\t" + appendix.getProviders().get(String.valueOf(fares.get(textViewIndex).getProviderId())));
 //            provider.setText(appendix.getProviders().get(String.valueOf(fares.get(textViewIndex).getProviderId())));
                 /*currentTextView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -132,19 +132,19 @@ public class ShowFlightAdapter extends RecyclerView.Adapter<ShowFlightAdapter.Sh
             }
             for (int indexView = 0; indexView < intMaxNoOfChild; indexView++) {
                 TextView price = new TextView(context);
-                TextView provider = new TextView(context);
+//                TextView provider = new TextView(context);
                 price.setId(indexView);
-                provider.setId(indexView + 100);
+//                provider.setId(indexView - 100);
 //                Log.d("ID: ", String.valueOf(provider.getId()));
                 price.setPadding(0, 20, 0, 20);
-                provider.setPadding(0, 20, 0, 20);
+//                provider.setPadding(0, 20, 0, 20);
                 price.setGravity(Gravity.CENTER_HORIZONTAL);
-                provider.setGravity(Gravity.CENTER_HORIZONTAL);
+//                provider.setGravity(Gravity.CENTER_HORIZONTAL);
 //                textView.setBackground(ContextCompat.getDrawable(context, R.drawable.background_sub_module_text));
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
 //                textView.setOnClickListener(this);
                 childLL.addView(price, layoutParams);
-                childLL.addView(provider, layoutParams);
+//                childLL.addView(provider, layoutParams);
             }
             itemFlightBinding.showButton.setOnClickListener(new View.OnClickListener() {
                 @Override
