@@ -149,10 +149,10 @@ public class ShowFlightAdapter extends RecyclerView.Adapter<ShowFlightAdapter.Sh
             itemFlightBinding.showButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("ID1:", String.valueOf(view.getId()));
-                    Log.d("ID2:", String.valueOf(R.id.flightDetails));
+//                    Log.d("ID1:", String.valueOf(view.getId()));
+//                    Log.d("ID2:", String.valueOf(R.id.showButton));
 
-                    if (view.getId() == R.id.flightDetails) {
+                    if (view.getId() == R.id.showButton) {
                         if (childLL.getVisibility() == View.VISIBLE) {
                             childLL.setVisibility(View.GONE);
                         } else {
