@@ -61,6 +61,7 @@ public class ShowFlightActivity extends AppCompatActivity {
             binding.date.setText(flightDate);
 
             Log.d("view model", "observer");
+//            showFlightAdapter.notifyDataSetChanged();
             showFlightAdapter.setAdapterData(flights, appendix);
         });
     }
